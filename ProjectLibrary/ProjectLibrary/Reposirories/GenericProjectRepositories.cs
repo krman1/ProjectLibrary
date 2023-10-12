@@ -2,7 +2,7 @@
 
 namespace ProjectLibrary.Reposirories
 {
-    public class GenericProjectRepositories<T>
+    public class GenericProjectRepositories<T> where T : IEntity
     {
         private readonly List<T> _items = new();
         public void Add(T item) 
@@ -17,7 +17,7 @@ namespace ProjectLibrary.Reposirories
                 Console.WriteLine(item);
             }
         }
-        public Project GetById(int id) 
+        public T GetById(int id) 
         {
             return _items.Single(item =>item.Id == id);
         }
