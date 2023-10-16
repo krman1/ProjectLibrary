@@ -10,6 +10,10 @@ namespace ProjectLibrary.Reposirories
             item.Id = _items.Count + 1;
             _items.Add(item);
         }
+        public T GetById(int id)
+        {
+            return _items.Single(item => item.Id == id);
+        }
         public void Save()
         {
             foreach (var item in _items)
@@ -17,9 +21,10 @@ namespace ProjectLibrary.Reposirories
                 Console.WriteLine(item);
             }
         }
-        public T GetById(int id) 
+        public void Remove(T item) 
         {
-            return _items.Single(item =>item.Id == id);
+            _items.Remove(item);
         }
+       
     }
 }
