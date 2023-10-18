@@ -2,7 +2,7 @@
 
 namespace ProjectLibrary.Reposirories
 {
-    public class GenericProjectRepositories<T> where T : IEntity
+    public class GenericProjectRepositories<T> where T : class, IEntity, new()
     {
         private readonly List<T> _items = new();
         public void Add(T item) 
