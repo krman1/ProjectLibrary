@@ -2,9 +2,13 @@
 
 namespace ProjectLibrary.Reposirories
 {
-    public class GenericProjectRepositories<T> where T : class, IEntity, new()
+    public class ListProjectRepositories<T> where T : class, IEntity, new()
     {
         private readonly List<T> _items = new();
+        public IEnumerable<T> GetAll()
+        {
+            return _items.ToList();
+        }
         public void Add(T item) 
         {
             item.Id = _items.Count + 1;
@@ -16,10 +20,7 @@ namespace ProjectLibrary.Reposirories
         }
         public void Save()
         {
-            foreach (var item in _items)
-            {
-                Console.WriteLine(item);
-            }
+            //save is not required with list
         }
         public void Remove(T item) 
         {
