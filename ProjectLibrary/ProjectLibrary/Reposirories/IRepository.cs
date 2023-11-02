@@ -3,12 +3,7 @@ using ProjectLibrary.Entities;
 
 namespace ProjectLibrary.Reposirories
 {
-    public interface IRepository<T> where T : class, IEntity
+    public interface IRepository<T> : IWriteRepository<T>, IReadRepository<T> where T : IEntity
     {
-        IEnumerable<T> GetAll();
-        T GetById(int id);
-        void Add(T item);
-        void Remove(T item);
-        void Save();
+
     }
-}
