@@ -3,10 +3,9 @@ using ProjectLibrary.Entities;
 
 namespace ProjectLibrary.Reposirories
 {
-    public interface IReadRepository<in T> where T : class, IEntity
+    public interface IReadRepository<out T> where T : class, IEntity
     {
-        void Add(T item);
-        void Remove(T item);
-        void Save();
+        IEnumerable<T> GetAll();
+        T GetById(int id);
     }
 }

@@ -4,7 +4,7 @@ using ProjectLibrary.Entities;
 
 namespace ProjectLibrary.Reposirories
 {
-    public class SqlRepository<T> where T: class, IEntity, new() 
+    public class SqlRepository<T> : IRepository<T> where T: class, IEntity, new() 
     {
         private readonly DbContext _dbContext;
         private readonly DbSet<T> _dbSet;

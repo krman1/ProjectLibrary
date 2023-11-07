@@ -3,9 +3,10 @@ using ProjectLibrary.Entities;
 
 namespace ProjectLibrary.Reposirories
 {
-    public interface IWriteRepository<out T> where T : class, IEntity
+    public interface IWriteRepository<in T> where T : class, IEntity
     {
-        IEnumerable<T> GetAll();
-        T GetById(int id);
+        void Add(T item);
+        void Remove(T item);
+        void Save();
     }
 }
