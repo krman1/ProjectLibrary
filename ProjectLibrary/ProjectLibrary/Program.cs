@@ -23,8 +23,8 @@ static void WriteAllToConsole(IReadRepository<Project> readRepository)
     foreach ( var item in items )
         Console.WriteLine(item);
 }
-static void WriteById(IReadRepository<Project> readRepository)
+static void WriteById(IRepository<Project> readRepository)
 {
-    var items = readRepository.GetById(3);
+    var items = readRepository.GetById(2);
     Console.WriteLine(items);
 }
