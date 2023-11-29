@@ -9,7 +9,7 @@ AddProjects(projectRepository);
 WriteAllToConsole(projectRepository);
 WriteById(projectRepository);
 
-static void AddProjects(IWriteRepository<Project> projectRepository)
+static void AddProjects(IRepository<Project> projectRepository)
 {
     projectRepository.Add(new ProjectLibrary.Entities.Project { Name = "Chawelańska", City = "Poznań", Architect = "Minkiewicz", Description = "Budynek wielorodzinny" });
     projectRepository.Add(new ProjectLibrary.Entities.Project { Name = "Grabiszyńska", City = "Łódź", Architect = "Kowalski", Description = "Hotel" });
@@ -17,7 +17,7 @@ static void AddProjects(IWriteRepository<Project> projectRepository)
     projectRepository.Save();
 }
 
-static void WriteAllToConsole(IReadRepository<Project> readRepository)
+static void WriteAllToConsole(IRepository<Project> readRepository)
 {
     var items = readRepository.GetAll();
     foreach ( var item in items )
@@ -25,6 +25,6 @@ static void WriteAllToConsole(IReadRepository<Project> readRepository)
 }
 static void WriteById(IRepository<Project> readRepository)
 {
-    var items = readRepository.GetById(2);
+    var items = readRepository.GetById(3);
     Console.WriteLine(items);
 }
