@@ -2,8 +2,6 @@
 using ProjectLibrary.Entities;
 using ProjectLibrary.Reposirories;
 
-
-
 var projectRepository = new SqlRepository<Project>(new ProjectLibraryDbContext());
 AddProjects(projectRepository);
 WriteAllToConsole(projectRepository);
@@ -11,9 +9,21 @@ WriteById(projectRepository);
 
 static void AddProjects(IRepository<Project> projectRepository)
 {
-    projectRepository.Add(new ProjectLibrary.Entities.Project { Name = "Chawelańska", City = "Poznań", Architect = "Minkiewicz", Description = "Budynek wielorodzinny" });
-    projectRepository.Add(new ProjectLibrary.Entities.Project { Name = "Grabiszyńska", City = "Łódź", Architect = "Kowalski", Description = "Hotel" });
-    projectRepository.Add(new ProjectLibrary.Entities.Project { Name = "Dymka", City = "Poznań", Architect = "Nowak", Description = "Biura" });
+    var projects = new[]
+    {
+    new ProjectLibrary.Entities.Project { Name = "Chawelańska", City = "Poznań", Architect = "Minkiewicz", Description = "Budynek wielorodzinny" },
+    new ProjectLibrary.Entities.Project { Name = "Grabiszyńska", City = "Łódź", Architect = "Kowalski", Description = "Hotel" },
+    new ProjectLibrary.Entities.Project { Name = "Dymka", City = "Poznań", Architect = "Nowak", Description = "Biura" },
+    };
+    AddBatch(projectRepository, projects);
+}
+
+static void AddBatch(IRepository<Project> projectRepository, Project[] projects)
+{
+    foreach(var project in projects)
+    {
+        projectRepository.Add(project);
+    }
     projectRepository.Save();
 }
 
