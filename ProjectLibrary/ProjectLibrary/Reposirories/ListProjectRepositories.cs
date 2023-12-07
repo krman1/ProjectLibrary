@@ -2,7 +2,7 @@
 
 namespace ProjectLibrary.Reposirories
 {
-    public class ListProjectRepositories<T> where T : class, IEntity, new()
+    public class ListProjectRepositories<T> : IRepository<T> where T : class, IEntity, new()
     {
         private readonly List<T> _items = new();
         public IEnumerable<T> GetAll()
