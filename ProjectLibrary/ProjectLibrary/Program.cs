@@ -18,13 +18,14 @@ static void AddProjects(IRepository<Project> projectRepository)
     AddBatch(projectRepository, projects);
 }
 
-static void AddBatch(IRepository<Project> projectRepository, Project[] projects)
+static void AddBatch<T>(IRepository<T> repository, T[] items) 
+    where T : class, IEntity
 {
-    foreach(var project in projects)
+    foreach(var item in items)
     {
-        projectRepository.Add(project);
+        repository.Add(item);
     }
-    projectRepository.Save();
+    repository.Save();
 }
 
 static void WriteAllToConsole(IRepository<Project> readRepository)
