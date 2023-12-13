@@ -1,6 +1,7 @@
 ﻿using ProjectLibrary.Data;
 using ProjectLibrary.Entities;
 using ProjectLibrary.Reposirories;
+using ProjectLibrary.Reposirories.Extentions;
 
 var projectRepository = new SqlRepository<Project>(new ProjectLibraryDbContext());
 AddProjects(projectRepository);
@@ -15,10 +16,10 @@ static void AddProjects(IRepository<Project> projectRepository)
     new ProjectLibrary.Entities.Project { Name = "Grabiszyńska", City = "Łódź", Architect = "Kowalski", Description = "Hotel" },
     new ProjectLibrary.Entities.Project { Name = "Dymka", City = "Poznań", Architect = "Nowak", Description = "Biura" },
     };
-    AddBatch(projectRepository, projects);
+    projectRepository.AddBatch(projects);
 }
 
-static void AddBatch<T>(IRepository<T> repository, T[] items) 
+/*static void AddBatch<T>(IRepository<T> repository, T[] items) 
     where T : class, IEntity
 {
     foreach(var item in items)
@@ -26,7 +27,7 @@ static void AddBatch<T>(IRepository<T> repository, T[] items)
         repository.Add(item);
     }
     repository.Save();
-}
+}*/
 
 static void WriteAllToConsole(IRepository<Project> readRepository)
 {
