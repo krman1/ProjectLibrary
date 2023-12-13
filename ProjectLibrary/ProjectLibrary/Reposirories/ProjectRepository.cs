@@ -2,7 +2,7 @@
 
 namespace ProjectLibrary.Reposirories
 {
-    public class ProjectRepositories
+    public class ProjectRepository
     {
         private readonly List<Project> _projects = new();
         public void Add(Project project) 
