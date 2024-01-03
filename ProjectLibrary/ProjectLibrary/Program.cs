@@ -3,10 +3,17 @@ using ProjectLibrary.Entities;
 using ProjectLibrary.Reposirories;
 using ProjectLibrary.Reposirories.Extentions;
 
-var projectRepository = new SqlRepository<Project>(new ProjectLibraryDbContext());
+var itemAdded = new ItemAdded(ProjectAdded);
+var projectRepository = new SqlRepository<Project>(new ProjectLibraryDbContext(), itemAdded);
 AddProjects(projectRepository);
 WriteAllToConsole(projectRepository);
 WriteById(projectRepository);
+
+static void ProjectAdded(object item)
+{
+    var project = (Project)item;
+    Console.WriteLine($"{project.Name +" "+ project.City + " " + project.Architect + " " + project.Description} added");
+}
 
 static void AddProjects(IRepository<Project> projectRepository)
 {

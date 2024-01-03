@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using ProjectLibrary.Entities;
+public delegate void ItemAdded(object item);
 
 namespace ProjectLibrary.Reposirories
 {
@@ -8,11 +9,13 @@ namespace ProjectLibrary.Reposirories
     {
         private readonly DbContext _dbContext;
         private readonly DbSet<T> _dbSet;
+        private readonly ItemAdded? _itemAddedCallBack;
 
-        public SqlRepository(DbContext dbContext)
+        public SqlRepository(DbContext dbContext, ItemAdded? itemAddedCallBack = null)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
+           _itemAddedCallBack = itemAddedCallBack;
         }
         public IEnumerable<T> GetAll()
         {
@@ -26,6 +29,7 @@ namespace ProjectLibrary.Reposirories
         public void Add(T item) 
         { 
             _dbSet.Add(item);
+            _itemAddedCallBack?.Invoke(item);
         }
         public void Remove(T item) 
         { 
