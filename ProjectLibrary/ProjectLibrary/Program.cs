@@ -3,8 +3,8 @@ using ProjectLibrary.Entities;
 using ProjectLibrary.Reposirories;
 using ProjectLibrary.Reposirories.Extentions;
 
-var itemAdded = new ItemAdded<Project>(ProjectAdded);
-var projectRepository = new SqlRepository<Project>(new ProjectLibraryDbContext(), itemAdded);
+
+var projectRepository = new SqlRepository<Project>(new ProjectLibraryDbContext(), ProjectAdded);
 AddProjects(projectRepository);
 WriteAllToConsole(projectRepository);
 WriteById(projectRepository);

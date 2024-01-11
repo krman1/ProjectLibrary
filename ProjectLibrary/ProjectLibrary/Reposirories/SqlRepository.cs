@@ -9,9 +9,9 @@ namespace ProjectLibrary.Reposirories
     {
         private readonly DbContext _dbContext;
         private readonly DbSet<T> _dbSet;
-        private readonly ItemAdded<T>? _itemAddedCallBack;
+        private readonly Action<T>? _itemAddedCallBack;
 
-        public SqlRepository(DbContext dbContext, ItemAdded<T>? itemAddedCallBack = null)
+        public SqlRepository(DbContext dbContext, Action<T>? itemAddedCallBack = null)
         {
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
