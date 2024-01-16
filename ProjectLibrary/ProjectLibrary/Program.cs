@@ -18,7 +18,7 @@ static void AddProjects(IRepository<Project> projectRepository)
 {
     var projects = new[]
     {
-    new ProjectLibrary.Entities.Project { Name = "Chawelańska", City = "Poznań", Architect = "Minkiewicz", Description = "Budynek wielorodzinny" },
+    new ProjectLibrary.Entities.Project { Name = "Mostek", City = "Gdańsk", Architect = "Gruszkiewicz", Description = "Budynek wielorodzinny" },
     new ProjectLibrary.Entities.Project { Name = "Grabiszyńska", City = "Łódź", Architect = "Kowalski", Description = "Hotel" },
     new ProjectLibrary.Entities.Project { Name = "Dymka", City = "Poznań", Architect = "Nowak", Description = "Biura" },
     };
