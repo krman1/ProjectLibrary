@@ -17,6 +17,7 @@ namespace ProjectLibrary.Reposirories
             _dbSet = _dbContext.Set<T>();
            _itemAddedCallBack = itemAddedCallBack;
         }
+        public event EventHandler<T>? ItemAdded;
         public IEnumerable<T> GetAll()
         {
             return _dbSet.OrderBy(item => item.Id).ToList();
@@ -30,6 +31,7 @@ namespace ProjectLibrary.Reposirories
         { 
             _dbSet.Add(item);
             _itemAddedCallBack?.Invoke(item);
+            ItemAdded?.Invoke(this, item);
         }
         public void Remove(T item) 
         { 
